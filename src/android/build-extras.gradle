@@ -7,10 +7,11 @@ android {
 		maven {
 			url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
 		}
+		 maven { url 'https://www.jitpack.io' }
 	}
 
 	dependencies {
-		implementation ('org.jitsi.react:jitsi-meet-sdk:3.+') { transitive = true }
+		implementation ('org.jitsi.react:jitsi-meet-sdk:5.+') { transitive = true }
 	}
 
 	compileOptions {

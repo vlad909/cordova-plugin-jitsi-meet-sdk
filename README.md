@@ -1,12 +1,25 @@
 # cordova-plugin-jitsi-meet-sdk
-Cordova plugin for Jitsi Meet React Native SDK.
+Original plugin (https://github.com/Zeno97/cordova-plugin-jitsi-meet-sdk) has backward compatibility issues because it uses an outdated version of jitsi-sdk. (3.+ is too old). 
+Cordova plugin for Jitsi Meet React Native SDK: https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-mobile/ Mobile SDK 4.0.0 is out and contains some backwards incompatible changes, check the release notes (24 Feb 2023). 
+Updated dependencies in the file `build-extras.gradle` so that the latest major version of SDK will be pulled. 
 
+## Warning
+For the plugin to work properly with the latest version, you need to update the `cordova-android` version to `11`, since sdk requires target version 32 and higher. After update you should append the next lines in your config.xml files:
+
+```
+        <resource-file src="res/android/ic_notification.png" target="app/src/main/res/drawable-ldpi/ic_notification.png" />
+        <resource-file src="res/android/ic_notification.png" target="app/src/main/res/drawable-mdpi/ic_notification.png" />
+        <resource-file src="res/android/ic_notification.png" target="app/src/main/res/drawable-hdpi/ic_notification.png" />
+        <resource-file src="res/android/ic_notification.png" target="app/src/main/res/drawable-xhdpi/ic_notification.png" />
+
+```
+These are notifications icons for library. Without these lines the plugin will not start correctly. 
 All options, feature flags and listeners are available. 
 
 All feature flags available can be found here: https://github.com/jitsi/jitsi-meet/blob/master/react/features/base/flags/constants.js
 
 ## Supported Platforms
-- __Android__ >= 23
+- __Android__ >= 23 
 - __iOS__
 
 ## Installation
@@ -14,8 +27,10 @@ The plugin can be installed via Cordova-CLI
 
 Install the latest head version
 ```
-cordova plugin add cordova-plugin-jitsi-meet-sdk
+cordova plugin add https://github.com/vlad909/cordova-plugin-jitsi-meet-sdk.git
 ```
+## Changes
+`welcomePageEnabled: false` has removed. Now it's a feature flag "welcomepage.enabled" (look at example)
 
 ## Usage
 All paramenters are optional except for room. You need to specify at least the room name.
@@ -44,7 +59,7 @@ JitsiMeet.startConference(
     serverURL: "https://meet.jit.si",
     room: "MyAmazingRoom",
     displayName: "Max!",
-    email: "max@amazingmax.it",
+    email: "max@amazingmax.it", // change it
     audioMuted: false,
     videoMuted: false,
     welcomePageEnabled: false,
@@ -64,7 +79,9 @@ JitsiMeet.startConference(
         "calendar.enabled": true,
         "meeting-name.enabled": true,
         "meeting-password.enabled": true,
-        "toolbox.alwaysVisible": true
+        "toolbox.alwaysVisible": true,
+	"welcomepage.enabled": true,
+ 	"prejoinpage.enabled": true
     }
 }, function(listener){
     // a listener has been fired!

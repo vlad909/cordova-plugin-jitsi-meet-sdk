@@ -49,13 +49,11 @@
     </platform>
 
     <!-- ios -->
-    <platform name="ios">
+     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="JitsiMeet">
                 <param name="ios-package" value="CDVJitsiMeet" />
             </feature>
-	        <preference name="deployment-target" value="15.1" />
-            <preference name="target-device" value="universal" />
         </config-file>
 
         <config-file target="*-Info.plist" parent="NSMicrophoneUsageDescription">
@@ -70,14 +68,22 @@
             <string>For meeting purpose</string>
         </config-file>
 
+        <!-- Needed to show CallKit UI -->
+        <config-file target="*-Info.plist" parent="UIBackgroundModes">
+            <array>
+                <string>voip</string>
+            </array>
+        </config-file>
+
         <header-file src="src/ios/CDVJitsiMeet.h" />
         <source-file src="src/ios/CDVJitsiMeet.m" />
 
         <podspec>
             <pods use-frameworks="true" >
-                <pod name="JitsiMeetSDK" spec="7.0.1" />
+                <pod name="JitsiMeetSDK" spec="9.2.2" />
             </pods>
         </podspec>
 
     </platform>
+	
 </plugin>

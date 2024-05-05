@@ -54,7 +54,7 @@
             <feature name="JitsiMeet">
                 <param name="ios-package" value="CDVJitsiMeet" />
             </feature>
-	    <preference name="deployment-target" value="15.1" />
+	        <preference name="deployment-target" value="15.1" />
             <preference name="target-device" value="universal" />
         </config-file>
 

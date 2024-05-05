@@ -29,7 +29,7 @@
     <description>Cordova plugin with Jitsi Meet SDK features</description>
     <license>Apache 2.0</license>
     <keywords>cordova,jitsi,sdk,android,ios</keywords>
-    <repo>https://github.com/Zeno97/cordova-plugin-jitsi-meet-sdk.git</repo>
+    <repo>https://github.com/vlad909/cordova-plugin-jitsi-meet-sdk.git</repo>
 
     <js-module src="www/jitsi-meet.js" name="JitsiMeet">
         <clobbers target="JitsiMeet" />
@@ -80,7 +80,7 @@
 
         <podspec>
             <pods use-frameworks="true" >
-                <pod name="JitsiMeetSDK" spec="9.2.2" />
+                <pod name="JitsiMeetSDK" spec="7.0.1" />
             </pods>
         </podspec>
 
